@@ -1,5 +1,13 @@
 # C++ Coding
 
+<p align="center">
+  <b style="color: blue;  ">Visitor count</b>
+  <br>
+  <a style="" href="https://github.com/akashdeep023">
+  <img src="https://profile-counter.glitch.me/coding-cpp/count.svg" />
+  </a>
+</p>
+
 ## Programming with C++
 
 -   Flowcharts & Pseudocode
