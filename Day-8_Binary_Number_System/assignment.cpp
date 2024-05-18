@@ -32,6 +32,11 @@ int decTobin(int n)
     return bin;
 }
 
+int addToBinary(int a, int b)
+{
+    int sum = binToDec(a) + binToDec(b);
+    return decTobin(sum);
+}
 int main()
 {
     // Question 1 : Convert the following binary numbers into decimal forms :
@@ -47,7 +52,7 @@ int main()
     cout << "Decimal to binary : " << decTobin(88) << endl;
 
     // ERROR ----------------------------------------------------------------------------------------------------
-    int bin = 0;
+    // int bin = 0;
     // cout << "bin init : " << bin << endl;
     // bin += dig * pow(10, i);
     // cout << "bin A : " << bin << endl;
@@ -73,5 +78,7 @@ int main()
     // cout << "bin pow 8: " << bin << endl;
 
     // Question 3 : Following are the rules of adding 2 binary digits :
+    cout << "Add to binary No : " << addToBinary(111, 101) << endl;
+
     return 0;
 }
