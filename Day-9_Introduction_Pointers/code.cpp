@@ -1,6 +1,27 @@
 #include <iostream>
 using namespace std;
 
+// Pass by value
+void changeX(int arg)
+{
+    arg = 20;            // create a copy of argument
+    cout << arg << endl; // 20
+}
+
+// Pass by reference using pointer
+void changePtnY(int *arg)
+{
+    *arg = 20;            // dereference
+    cout << *arg << endl; // 20
+}
+
+// Pass by reference using reference variable
+void changeRefZ(int &param)
+{
+    param = 20;            // reference variable
+    cout << param << endl; // 20
+}
+
 int main()
 {
     // Introduction Pointers --------------------------------
@@ -44,6 +65,28 @@ int main()
     cout << ptrnl << endl; // 0
     // Dereference NULL pointer is not possible as it'll result in error
     // cout << *ptrnl << endl; // Segmentation fault -> error
+
+    // Passing Arguments --------------------------------
+    // Pass by value -> When parameter is a copy of actual argument variable in memory.
+    int x = 10;
+    changeX(x);
+    cout << x << endl; // 10
+    // Pass by reference -> When we pass the reference of argument to the function.
+    int y = 10;
+    changePtnY(&y);    // using pointer, pass address
+    cout << y << endl; // 20
+
+    // Reference Variable --------------------------------
+    // Reference Variable is an alternate name (alias) of already existing variable.
+    // a and b refer to the same location in memory
+    int k = 5;
+    int &l = k; // reference variable to locate old location memory || must be initialized reference variable
+    l = 15;
+    cout << k << endl;
+    cout << l << endl;
+    int z = 10;
+    changeRefZ(z);     // using reference, pass reference variable
+    cout << z << endl; // 20
 
     return 0;
 }
