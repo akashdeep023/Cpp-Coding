@@ -19,6 +19,53 @@ void printArray(int nums[], int n) // pass only reference || array size not pass
     {
         cout << nums[i] << ", ";
     }
+    cout << endl;
+}
+
+// Linear search -> Time complexity O(n) -> Input size(array size) & no of operations
+int linearSearch(int arr[], int n, int key) // int arr[] == int *arr
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == key)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// Reverse an array (With extra space)
+void arrayReverse(int *arr, int n) // Time complexity O(n+n) => O(2n) => O(n) || Space complexity O(n)
+{
+    int newarr[n]; // Space complexity O(n)
+    int j = 0;
+    for (int i = n - 1; i >= 0; i--) // O(n)
+    {
+        newarr[j] = arr[i];
+        j++;
+    }
+    for (int i = 0; i < n; i++) // O(n)
+    {
+        arr[i] = newarr[i];
+    }
+}
+
+// Reverse an array (Without extra space) (Twi Pointer approach).
+void arrayReverseP(int *arr, int n) // Time complexity O(n/2) => O(n) || Space complexity O(1)
+{
+    int start = 0;
+    int end = n - 1;
+    while (start < end)
+    {
+        // swap use variable
+        // int temp = arr[start];
+        // arr[start] = arr[end];
+        // arr[end] = temp;
+        swap(arr[start], arr[end]); // inbuild method in c++
+        start++;
+        end--;
+    }
 }
 
 int main()
@@ -136,6 +183,21 @@ int main()
     // printArray(arr, n); // good method pass reference of arrays and size of arrays
 
     // Linear search --------------------------------
+    // Search for key = 10
+    // int arr[8] = {2, 4, 6, 8, 10, 12, 14, 16}; // sorted array
+    // int n = sizeof(arr) / sizeof(int);
+    // cout << "Index no : " << linearSearch(arr, n, 10) << endl;
+    // cout << "Index no : " << linearSearch(arr, n, 1) << endl;
+
+    // Reverse an array --------------------------------
+    int arr[] = {5, 4, 3, 9, 2};
+    int n = sizeof(arr) / sizeof(int);
+    printArray(arr, n);
+    // With extra space ---
+    // arrayReverse(arr, n);
+    // Without extra space ---
+    arrayReverseP(arr, n);
+    printArray(arr, n);
 
     return 0;
 }
