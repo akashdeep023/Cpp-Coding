@@ -68,6 +68,31 @@ void arrayReverseP(int *arr, int n) // Time complexity O(n/2) => O(n) || Space c
     }
 }
 
+// Binary Search
+int binarySearch(int *arr, int n, int key) // Time complexity => O(logn)
+// iterations count x = (n/2^0 , n/2^1, n/2^2, ---- , 1) => x = n/2^(x-1) = 1 => n = 2^(x-1) => logn (base 2) = x-1 => x = logn => O(logn)
+{
+    int start = 0;
+    int end = n - 1;
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+        if (arr[mid] == key)
+        {
+            return mid;
+        }
+        else if (arr[mid] < key) // 2nd half
+        {
+            start = mid + 1;
+        }
+        else // 1st half
+        {
+            end = mid - 1;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     // Start DSA (Data Structure Algorithm) -> Just a way of arranging data.
@@ -183,6 +208,7 @@ int main()
     // printArray(arr, n); // good method pass reference of arrays and size of arrays
 
     // Linear search --------------------------------
+    // sorted ya Unsorted array TC -> O(n)
     // Search for key = 10
     // int arr[8] = {2, 4, 6, 8, 10, 12, 14, 16}; // sorted array
     // int n = sizeof(arr) / sizeof(int);
@@ -190,14 +216,36 @@ int main()
     // cout << "Index no : " << linearSearch(arr, n, 1) << endl;
 
     // Reverse an array --------------------------------
-    int arr[] = {5, 4, 3, 9, 2};
-    int n = sizeof(arr) / sizeof(int);
-    printArray(arr, n);
+    // int arr[] = {5, 4, 3, 9, 2};
+    // int n = sizeof(arr) / sizeof(int);
     // With extra space ---
     // arrayReverse(arr, n);
     // Without extra space ---
-    arrayReverseP(arr, n);
-    printArray(arr, n);
+    // arrayReverseP(arr, n);
+    // printArray(arr, n);
+
+    // Binary search --------------------------------
+    // Prerequisite : sorted array
+    // int arr[] = {2, 4, 6, 8, 10, 12, 14, 16};
+    // int n = sizeof(arr) / sizeof(int);
+    // cout << "index no : " << binarySearch(arr, n, 10) << endl;
+    // cout << "index no : " << binarySearch(arr, n, 18) << endl;
+    // cout << "index no : " << binarySearch(arr, n, 4) << endl;
+
+    // Array Pointer ---------------------------------
+    // int a = 5;
+    // int *ptr = &a;
+    // cout << *ptr << endl;
+    // int b = 10;
+    // ptr = &b; // variable pointer change
+    // cout << *ptr << endl;
+
+    // int arr[] = {2, 4, 5, 3, 9};
+    // cout << arr << endl;
+    // int y = 43;
+    // // arr = &y; // Error - Not array pointer change (this value is constant)
+
+    // Pinter Arithmetic --------------------------------------
 
     return 0;
 }
