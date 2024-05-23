@@ -93,6 +93,15 @@ int binarySearch(int *arr, int n, int key) // Time complexity => O(logn)
     return -1;
 }
 
+// Print array used or pointer arithmetic operations
+void printArrayPointerArithmetic(int *arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << *arr + i << ' ';
+    }
+    cout << endl;
+}
 int main()
 {
     // Start DSA (Data Structure Algorithm) -> Just a way of arranging data.
@@ -233,6 +242,7 @@ int main()
     // cout << "index no : " << binarySearch(arr, n, 4) << endl;
 
     // Array Pointer ---------------------------------
+    // Array Pointer acts like a constant pointer (read only value).
     // int a = 5;
     // int *ptr = &a;
     // cout << *ptr << endl;
@@ -243,9 +253,61 @@ int main()
     // int arr[] = {2, 4, 5, 3, 9};
     // cout << arr << endl;
     // int y = 43;
-    // // arr = &y; // Error - Not array pointer change (this value is constant)
+    // arr = &y; // Error - Not array pointer change (this value is constant)
 
-    // Pinter Arithmetic --------------------------------------
+    // Pinter Arithmetic -------------------------------------->
+    // 1. Increment & Decrement Pointer (ptr++ & ++ptr & ptr-- & --ptr) --
+    // int a = 5;
+    // int *ptr = &a;
+    // cout << "Pointer : " << ptr << " | Value : " << *ptr << endl; // Pointer : 0x61ff08 | Value : 5
+    // ++ptr;                                                        // Pre increment || 1 int ++ => add 4 bytes
+    // cout << "Pointer : " << ptr << " | Value : " << *ptr << endl; // Pointer : 0x61ff0c | Value : 6422284
+    // ptr++;                                                        // Post increment || 1 int ++ => add 4 bytes
+    // cout << "Pointer : " << ptr << " | Value : " << *ptr << endl; // Pointer : 0x61ff10 | Value : 6422320
+    // --ptr;                                                        // Pre decrement || 1 int -- => sub 4 bytes
+    // cout << "Pointer : " << ptr << " | Value : " << *ptr << endl; // Pointer : 0x61ff0c | Value : 6422284
+    // ptr--;                                                        // Post decrement || 1 int -- => sub 4 bytes
+    // cout << "Pointer : " << ptr << " | Value : " << *ptr << endl; // Pointer : 0x61ff08 | Value : 5
+
+    // 2. Addition & Subtraction of Constants (ptr + 3 & ptr - 3) --------------------------------
+    // int x = 2;
+    // int *xptr = &x;
+    // cout << "Pointer : " << xptr << " | Value : " << *xptr << endl;
+    // xptr += 3; // 3 int ++ => 12 bytes add
+    // cout << "Pointer : " << xptr << " | Value : " << *xptr << endl;
+    // xptr -= 3; // 3 int -- => 12 bytes subtract
+    // cout << "Pointer : " << xptr << " | Value : " << *xptr << endl;
+
+    // Ex-
+    // int arr[5] = {0, 1, 2, 3, 4};
+    // int n = sizeof(arr) / sizeof(int);
+    // printArrayPointerArithmetic(arr, n);
+
+    // 3. Addition & subtraction of pointers (ptr1 + ptr2 & ptr1 - ptr2) --------------------------------
+    // int x = 2, y = 3;
+    // int *xptr = &x, *yptr = &y;
+    // cout << xptr << " " << yptr << endl;
+    // cout << (xptr + yptr) << endl; invalid operation
+    // cout << xptr - yptr << endl;
+    // cout << yptr - xptr << endl;
+
+    // Ex-
+    // int arr[3] = {3, 6, 2};
+    // cout << arr << endl;
+    // cout << arr + 2 << endl;
+    // int *ptr1 = arr;
+    // int *ptr2 = arr + 2;
+    // cout << ptr2 - ptr1 << endl;
+
+    // 4. Comparison (== , > , >= , < , <=)
+    int arr[3] = {3, 6, 2};
+    cout << arr << endl;
+    cout << arr + 2 << endl;
+    int *ptr1 = arr;
+    int *ptr2 = arr + 2;
+    cout << (arr == ptr1) << endl;  // true -> 1
+    cout << (ptr2 > ptr1) << endl;  // true -> 1
+    cout << (ptr2 <= ptr1) << endl; // false -> 0
 
     return 0;
 }
