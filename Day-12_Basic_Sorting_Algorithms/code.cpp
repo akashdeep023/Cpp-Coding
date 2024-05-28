@@ -78,9 +78,28 @@ void insertionSort(int *arr, int n) // TC -> O(n^2)
 // {1, 3, 4, 5, 2} -> i = 3
 // {1, 2, 3, 4, 5} -> i = 4
 
-void countingSort(int *arr, int n)
+void countingSort(int *arr, int n) //  TC -> O(n + range)
 {
-    cout << "Insertion sort : ";
+    int freq[10000] = {0}; // range
+    int minVal = INT16_MAX, maxVal = INT16_MIN;
+    for (int i = 0; i < n; i++) // TC => O(n)
+    {
+        freq[arr[i]]++;
+        minVal = min(minVal, arr[i]);
+        maxVal = max(maxVal, arr[i]);
+    }
+    for (int i = minVal, j = 0; i <= maxVal; i++) // TC => O(range) -> max - min
+    {
+        while (freq[i] > 0)
+        {
+            arr[j++] = i;
+            freq[i]--;
+        }
+    }
+
+    // printArray(freq, n);
+
+    cout << "Counting sort : ";
     printArray(arr, n);
 }
 
@@ -105,9 +124,11 @@ int main()
     // Idea -> Pick an element from unsorted part & place it correctly in sorted part.
     // insertionSort(arr, n);
 
-    // Counting sort --------------------------------
+    // Counting sort -------------------------------- (Min range number)
     // Idea -> Use a frequency count of elements from min to max.
-    // countingSort(arr, n);
+    int count[] = {1, 4, 1, 3, 2, 4, 3, 7};
+    int nc = sizeof(count) / sizeof(int);
+    countingSort(count, nc);
 
     return 0;
 }
