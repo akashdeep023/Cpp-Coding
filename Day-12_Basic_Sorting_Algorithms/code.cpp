@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 void printArray(int *arr, int n)
@@ -21,7 +22,7 @@ void bubbleSort(int *arr, int n) // TC -> O(n^2)
                 // int temp = arr[j];  // menually swap
                 // arr[j] = arr[j + 1];
                 // arr[j + 1] = temp;
-                swap(arr[j], arr[j + 1]); // inbuild method
+                swap(arr[j], arr[j + 1]); // inbuilt method
                 isSort = true;
             }
         }
@@ -126,9 +127,21 @@ int main()
 
     // Counting sort -------------------------------- (Min range number)
     // Idea -> Use a frequency count of elements from min to max.
-    int count[] = {1, 4, 1, 3, 2, 4, 3, 7};
+    int count[8] = {1, 4, 1, 3, 2, 4, 3, 7};
     int nc = sizeof(count) / sizeof(int);
-    countingSort(count, nc);
+    // countingSort(count, nc);
+
+    // Inbuilt sort -------------------------------- O(n logn)
+    // Accending order
+    // sort(count, count + 8); // start -> start iterator || end -> end iterator
+    // sort(count + 2, count + 5);
+    // cout << "Inbuilt sort Accending Order : ";
+    // printArray(count, 8);
+
+    // Descending order
+    sort(count, count + 8, greater<int>()); // use comparison function
+    cout << "Inbuilt sort Descending Order : ";
+    printArray(count, 8);
 
     return 0;
 }
