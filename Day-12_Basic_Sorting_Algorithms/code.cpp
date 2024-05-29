@@ -66,7 +66,7 @@ void insertionSort(int *arr, int n) // TC -> O(n^2)
             // swap(arr[j], arr[j + 1]);
             j--;
         }
-        arr[j + 1] = curr; // why is this line needed? -> arr[j + 1] = arr[j]; if you use it then write this line other NO
+        arr[j + 1] = curr; // why is this line needed? -> arr[j + 1] = arr[j]; if you use it then write this line, otherwise NO
         printArray(arr, n);
     }
     cout << "Insertion sort : ";
