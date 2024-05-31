@@ -121,6 +121,24 @@ bool searchMatrix3(int arr[][4], int n, int m, int key) // 2D array row wise and
     cout << "Key is not found" << endl;
     return false;
 }
+
+int func(int mat[][4], int n, int m)
+{
+    cout << "0th row pointer : " << mat << endl;      // row pointer
+    cout << "1st row pointer : " << mat + 1 << endl;  // row pointer
+    cout << "2nd row pointer : " << mat + 2 << endl;  // row pointer
+    cout << "0th row value : " << *(mat) << endl;     // row starting pointer (1st cell)
+    cout << "2nd row value : " << *(mat + 2) << endl; // row starting pointer
+    cout << "1st row value : " << *(mat + 1) << endl; // row starting pointer
+    cout << "mat[2][2] : " << mat[2][2] << " == " << "*(*(mat + 2) + 2) : " << *(*(mat + 2) + 2) << endl;
+}
+int func2(int (*mat)[4], int n, int m)
+{
+    cout << "0th row pointer : " << mat << endl;
+    cout << "1st row pointer : " << mat + 1 << endl;
+    cout << "2nd row pointer : " << mat + 2 << endl;
+}
+
 int main()
 {
     // Creating 2D array --------------------------------
@@ -189,6 +207,23 @@ int main()
     cout << "Search key (Bruteforce) : " << searchMatrix(sortMatrix, 4, 4, key) << endl;
     cout << "Search key (Binary Search) : " << searchMatrix2(sortMatrix, 4, 4, key) << endl;
     cout << "Search key (Staircase Search) : " << searchMatrix3(sortMatrix, 4, 4, key) << endl;
+    cout << endl;
+
+    // Matrix Pointers --------------------------------
+    // 2D Array name behaves as a row pointer
+    int mat[4][4] = {{1, 2, 3, 4},
+                     {5, 6, 7, 8},
+                     {9, 10, 11, 12},
+                     {13, 14, 15, 16}};
+    cout << mat << endl;
+    cout << mat << " == " << &mat[0][0] << endl;     // pointer denotes 1st row ([0][0])
+    cout << mat + 1 << " != " << &mat[0][1] << endl; // add 1 then pointer denotes 2nd row not 2nd col of 1st row
+    cout << mat + 1 << " == " << &mat[1][0] << endl; // add 1 then pointer denotes 2nd row ([1][0])
+    cout << endl;
+
+    // Matrix Pointers in Functions --------------------------------
+    func(mat, 4, 4);  // pass by reference
+    func2(mat, 4, 4); // pass by reference
 
     return 0;
 }
