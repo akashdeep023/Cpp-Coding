@@ -42,5 +42,21 @@ int main()
     // #include <cstring> Include the header for strlen
     cout << strlen(work4) << endl; // string length = 4 = existing char number
 
+    // Input char array ---------------------------------------
+    // char random[20];
+    // cout << "Enter your random word : ";
+    // cin >> random; // ignore word after whitespace
+    // cout << "Your random word is : " << random << endl;
+    // cout << "Your random word string length is " << strlen(random) << endl;
+    // cout << "Your random word array length is " << sizeof(random) << endl; // sizeof(random) = 50 bytes
+
+    char sentence[50];
+    cout << "Enter your sentence : ";
+    cin.getline(sentence, 50, '*'); // add all sentence include whitespace and max limit to 50 characters and 3rt parameter delimiter (optional) ('*' ya '.')
+    cout << "Your sentence is : " << sentence << endl;
+    cout << "Your sentence is : " << sentence[0] << endl;
+    cout << "Your sentence string length is " << strlen(sentence) << endl;
+    cout << "Your sentence array length is " << sizeof(sentence) << endl; // sizeof(sentence) = 50 bytes
+
     return 0;
 }
