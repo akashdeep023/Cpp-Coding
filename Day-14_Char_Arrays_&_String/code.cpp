@@ -52,7 +52,7 @@ int main()
 
     char sentence[50];
     cout << "Enter your sentence : ";
-    cin.getline(sentence, 50, '*'); // add all sentence include whitespace and max limit to 50 characters and 3rt parameter delimiter (optional) ('*' ya '.')
+    cin.getline(sentence, 50, '*'); // add all sentence include whitespace and max limit to 50 characters and 3rt parameter delimiter (optional) ('*' ya '.') use optional delimiter then user allways enter delimiter
     cout << "Your sentence is : " << sentence << endl;
     cout << "Your sentence is : " << sentence[0] << endl;
     cout << "Your sentence string length is " << strlen(sentence) << endl;
