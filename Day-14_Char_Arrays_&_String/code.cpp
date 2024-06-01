@@ -2,6 +2,51 @@
 using namespace std;
 #include <cstring> // Include the header for strlen
 
+void toUpper(char *str, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i] = 'A' + (str[i] - 'a'); // 'A; + letter position => Uppercase letter
+        }
+    }
+    cout << str << endl;
+}
+
+void toLower(char *str, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (str[i] >= 'A' && str[i] <= 'Z')
+        {
+            str[i] = 'a' + (str[i] - 'A'); // 'a' + letter position => Lowercase letter
+        }
+    }
+    cout << str << endl;
+}
+
+void toReverse(char *str, int n)
+{
+    for (int i = 0; i < n / 2; i++)
+    {
+        swap(str[i], str[n - 1 - i]);
+    }
+    cout << str << endl;
+}
+
+bool isPalindrome(char *str, int n)
+{
+    for (int i = 0; i < n / 2; i++)
+    {
+        if (str[i] != str[n - 1 - i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     // Char Data Type --------------------------------
@@ -50,14 +95,28 @@ int main()
     // cout << "Your random word string length is " << strlen(random) << endl;
     // cout << "Your random word array length is " << sizeof(random) << endl; // sizeof(random) = 50 bytes
 
-    char sentence[50];
-    cout << "Enter your sentence : ";
+    // char sentence[50];
+    // cout << "Enter your sentence : ";
     // cin.getline(sentence, 50); // add all sentence include whitespace and max limit to 50 characters and 3rt parameter delimiter (optional) ('*' ya '.') use optional delimiter then user allways enter delimiter
-    cin.getline(sentence, 50, '*');
-    cout << "Your sentence is : " << sentence << endl;
-    cout << "Your sentence is : " << sentence[0] << endl;
-    cout << "Your sentence string length is " << strlen(sentence) << endl;
-    cout << "Your sentence array length is " << sizeof(sentence) << endl; // sizeof(sentence) = 50 bytes
+    // cin.getline(sentence, 50, '*');
+    // cout << "Your sentence is : " << sentence << endl;
+    // cout << "Your sentence is : " << sentence[0] << endl;
+    // cout << "Your sentence string length is " << strlen(sentence) << endl;
+    // cout << "Your sentence array length is " << sizeof(sentence) << endl; // sizeof(sentence) = 50 bytes
+
+    // Convert to Upper Case --------------------------------
+    char text[20] = "AppLe";
+    // toUpper(text, strlen(text));
+    toLower(text, strlen(text));
+
+    // Reverse a char array --------------------------------
+    char text2[10] = "code";
+    toReverse(text2, strlen(text2));
+
+    // Valid Palindrome --------------------------------
+    // char text3[10] = "madam";
+    char text3[10] = "abcvvba";
+    cout << "Palindrome : " << isPalindrome(text3, strlen(text3)) << endl;
 
     return 0;
 }
