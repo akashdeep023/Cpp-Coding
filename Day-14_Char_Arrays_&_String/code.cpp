@@ -48,6 +48,34 @@ bool isPalindrome(char *str, int n) // TC -> O(n)
     return true;
 }
 
+bool isAnagram(string str, string str2)
+{
+    if (str.length() != str2.length())
+    {
+        cout << "Not Valid Anagrams : ";
+        return false;
+    }
+    int count[26] = {0};
+    for (int i = 0; i < str.length(); i++)
+    {
+        count[str[i] - 'a']++;
+    }
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (count[str2[i] - 'a'] > 0)
+        {
+            count[str2[i] - 'a']--;
+        }
+        else
+        {
+            cout << "Not Valid Anagrams : ";
+            return false;
+        }
+    }
+    cout << "Valid Anagrams : ";
+    return true;
+}
+
 int main()
 {
     // Char Data Type --------------------------------
@@ -192,6 +220,24 @@ int main()
     cout << strfind.find("JavaScript") << endl; // word not existing in the string then returns ansigned value (84738273836583) return == -1
     int idx = strfind.find("JavaScript");
     cout << idx << endl; // -1
+
+    // Valid Anagram --------------------------------
+    string strana = "anagram";
+    string strana2 = "nagaram";
+    cout << isAnagram(strana, strana2) << endl;
+    string strana3 = "car";
+    string strana4 = "rat";
+    cout << isAnagram(strana3, strana4) << endl;
+
+    // Using Operators
+    string strop = "Hello";
+    string strop2 = "Hello";
+    cout << (strop == strop2) << endl;
+    cout << (strop > strop2) << endl;
+    cout << (strop < strop2) << endl;
+    cout << (strop >= strop2) << endl;
+    cout << (strop <= strop2) << endl;
+    cout << (strop != strop2) << endl;
 
     return 0;
 }
