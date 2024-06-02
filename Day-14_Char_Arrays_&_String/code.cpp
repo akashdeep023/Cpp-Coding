@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-#include <cstring> // Include the header for strlen
+#include <cstring> // Include the header for strlen and string functions
+#include <string>  // Include the header for string class
 
 void toUpper(char *str, int n)
 {
@@ -14,7 +15,7 @@ void toUpper(char *str, int n)
     cout << str << endl;
 }
 
-void toLower(char *str, int n)
+void toLower(char *str, int n) // TC -> O(n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -26,7 +27,7 @@ void toLower(char *str, int n)
     cout << str << endl;
 }
 
-void toReverse(char *str, int n)
+void toReverse(char *str, int n) // TC -> O(n)
 {
     for (int i = 0; i < n / 2; i++)
     {
@@ -35,7 +36,7 @@ void toReverse(char *str, int n)
     cout << str << endl;
 }
 
-bool isPalindrome(char *str, int n)
+bool isPalindrome(char *str, int n) // TC -> O(n)
 {
     for (int i = 0; i < n / 2; i++)
     {
@@ -107,16 +108,90 @@ int main()
     // Convert to Upper Case --------------------------------
     char text[20] = "AppLe";
     // toUpper(text, strlen(text));
-    toLower(text, strlen(text));
+    // toLower(text, strlen(text));
 
     // Reverse a char array --------------------------------
     char text2[10] = "code";
-    toReverse(text2, strlen(text2));
+    // toReverse(text2, strlen(text2));
 
     // Valid Palindrome --------------------------------
     // char text3[10] = "madam";
     char text3[10] = "abcvvba";
-    cout << "Palindrome : " << isPalindrome(text3, strlen(text3)) << endl;
+    // cout << "Palindrome : " << isPalindrome(text3, strlen(text3)) << endl;
+
+    // <cstring> function ----------------------------------
+    char str1[100];
+    // str1 = "Hello world"; // --->  error (can't assign string literal to character array)
+    // strcpy(str1, "Hello world"); // assign string literal to character array, using strcpy() function (cstring header file)
+    char str2[50] = "Hello world";
+    strcpy(str1, str2); // copy string from str2 to str1 (str1 = str2) (destination string, sourse string)
+    cout << str1 << endl;
+
+    char str3[100] = "Hello ";
+    char str4[100] = "jack";
+    strcat(str3, str4);   // to concatenate/join str3 with str4 (str3 = str3 + str4)
+    cout << str3 << endl; // concatenate string
+    cout << str4 << endl; // not changed
+
+    char str5[100] = "abc";
+    char str6[100] = "xyz";
+    cout << strcmp(str5, str6) << endl;        // compares 2 strings basse on values (-ve, 0, +ve)
+    cout << strcmp("abc", "abc") << endl;      // abc == abc -> 0 (compare only 1st character   )
+    cout << strcmp("apple", "x") << endl;      // apple <= x -> -ve
+    cout << strcmp("mango", "banana") << endl; // mango >= banana -> +ve
+
+    // String in C++ --------------------------------
+    // OOPS: Class, Object, Member Functions & Properties -> OOPS concept used
+    string strval = "Hello world!"; // strval is a object not character array
+    cout << strval << endl;
+
+    // C++ String are objects of pre defined string class in STL (Standard Template Library) => STL have <string> , <vector> etc...
+    // C++ String have useful member functions.
+    // C++ String are dynamic (their size can be changed at run time). => C++ String size can be changed but characters array size not changed
+    // C++ String operators like +, ==, >=, <, > etc. => str1 > str2
+    // C++ String are sorted contiguously in memory. => C++ String create just like array in memory
+
+    string strh = "Hello";
+    cout << strh << endl;
+    strh = "Yellow"; // posible in string not char array
+    cout << strh << endl;
+
+    string stri;
+    // cout << "Enter string : ";
+    // cin >> stri; // cin ignores word after white spaces
+    // getline(cin, stri); // input , string , delimiter (optional)
+    // cout << stri << endl;
+    // cout << stri[0] << endl; // access string using []
+    // cout << stri[1] << endl;
+    // cout << stri[2] << endl;
+
+    // For Each loop -------------------------------
+    string strapna = "Apna Ghar!";
+    // using for loop
+    // for (int i = 0; i < strapna.length(); i++) // use dot operator => object, dot operator, member function
+    // {
+    //     cout << strapna[i] << ", ";
+    // }
+    // cout << endl;
+
+    // using for each loop
+    // for (char ch : strapna)
+    // {
+    //     cout << ch << ", ";
+    // }
+    // cout << endl;
+
+    // String Member functions --------------------------------
+    cout << strapna.length() << endl;     // length of strapna string
+    cout << strapna[2] << endl;           // char of index 2 || using array
+    cout << strapna.at(2) << endl;        // char of index 2 || using member function
+    cout << strapna.substr(2, 2) << endl; // starting index and length of substring
+    string strfind = "I love coding in C++  & Java. I don't like Python, like C++";
+    cout << strfind.find("C++") << endl;        // returns index of 1st occurrence of word
+    cout << strfind.find("C++", 20) << endl;    // returns index of 1st occurrence of word || 2nd parameter index no to find before the word
+    cout << strfind.find("JavaScript") << endl; // word not existing in the string then returns ansigned value (84738273836583) return == -1
+    int idx = strfind.find("JavaScript");
+    cout << idx << endl; // -1
 
     return 0;
 }
