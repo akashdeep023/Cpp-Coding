@@ -40,7 +40,7 @@ void funcArray()
     delete[] ptr; // delete heap memory after operation end || free space || (delete keyword used to delete memory allocated)
 }
 
-void pairSumBruteForce(vector<int> ptr, int target)
+void pairSumBruteForce(vector<int> ptr, int target) // TC = O(n^2)
 {
     for (int i = 0; i < ptr.size(); i++)
     {
@@ -54,8 +54,25 @@ void pairSumBruteForce(vector<int> ptr, int target)
     }
 }
 
-void pairSumEfficient(vector<int> ptr, int target)
+void pairSumEfficient(vector<int> ptr, int target) // two pointer Approach TC => O(n)
 {
+    int start = 0, end = ptr.size() - 1;
+    while (start < end)
+    {
+        if (ptr[start] + ptr[end] == target)
+        {
+            cout << "Indies no : {" << start << ", " << end << "} => " << ptr[start] << " + " << ptr[end] << " = " << target << endl;
+            break;
+        }
+        else if (ptr[start] + ptr[end] < target)
+        {
+            start++;
+        }
+        else
+        {
+            end--;
+        }
+    }
 }
 
 int main()
@@ -167,12 +184,15 @@ int main()
     // cout << "Size : " << vect.size() << endl;         // size = 4
     // cout << "Capacity : " << vect.capacity() << endl; // capacity = 8
 
-    // Pain Sum --------------------------------
+    // Pair Sum --------------------------------
     // Find if any pair in sorted vector has target sum.
     vector<int> vecs = {2, 7, 11, 15};
     int target = 9;
-    pairSumBruteForce(vecs, target);
-    pairSumEfficient(vecs, target);
+    // pairSumBruteForce(vecs, target);
+    // pairSumEfficient(vecs, target);
+
+    // 2D Vectors --------------------------------
+    //
 
     return 0;
 }
